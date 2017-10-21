@@ -1,0 +1,5 @@
+Django==1.11.6
+django-controlcenter==0.2.3
+django-pkgconf==0.3.0
+gunicorn==19.7.1
+pytz==2017.2
