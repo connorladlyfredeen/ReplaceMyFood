@@ -1,1 +1,1 @@
-web: gunicorn replaceMyFood.wsgi
+web: gunicorn replaceMyFood.wsgi --log-file -
