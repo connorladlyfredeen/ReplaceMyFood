@@ -1,1 +1,2 @@
-web: gunicorn replaceMyFood.wsgi --log-file -
+release: python manage.py migrate
+web: gunicorn replaceMyFood.wsgi
