@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'replaceMyFood.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('DATABASE_URL', default="sqlite:/db.sqlite3")
     )
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -124,7 +124,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=["*"], cast=Csv())
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
