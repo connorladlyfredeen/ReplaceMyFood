@@ -8,11 +8,11 @@
         function goToProduct() {
             var product = document.getElementById("productName").value
             var city = document.getElementById("cityName").value
-            window.location.href = '/buyer/product?name=' + encodeURI(product) + '&city=' + encodeURI(city)
+            window.location.href = "{% url 'product' %}?name="+ encodeURI(product) + "&city=" + encodeURI(city)
         }
         function goToMarket() {
             var city = document.getElementById("marketCityName").value
-            window.location.href = '/buyer/market?city=' + encodeURI(city)
+            window.location.href = "{% url 'markets' %}?city=" + encodeURI(city)
         }
     </script>
     <h3>Search for a product</h3>

@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    {% if message %}<p style="color:{{ colour }}"><strong>{{ message }}</strong></p>{% endif %}
+    <h1>Add or Modify an existing vendor</h1>
+    <p>If a vendor is found with the given name then it will be added otherwise it will be modified.</p>
+
+    <form action="{% url 'vendor-add' %}" method="post">
+        {% csrf_token %}
+        <input name="name" id="AddVendorVendorName" />
+            <label for="AddVendorVendorName">Enter your vendor name</label><br />
+        <input name="city" id="AddVendorVendorCity" />
+            <label for="AddVendorVendorCity">Enter your vendor city</label><br />
+        <input name="address" id="AddVendorVendorAddress" />
+            <label for="AddVendorVendorAddress">Enter your vendor address</label><br />
+        <input name="owner" id="AddVendorVendorOwner" />
+            <label for="AddVendorVendorOwner">Enter your vendor owner's name</label><br />
+        <input name="market" id="AddVendorVendorMarket" />
+            <label for="AddVendorVendorMarket">Enter your vendor market. If it doesn't exist then it will be created</label><br />
+        <input name="phone" id="AddVendorVendorPhone" />
+            <label for="AddVendorVendorPhone">Enter your phone number. If you are updating the value then we will use the phone number to validate your identity</label><br />
+        <input type="submit" value="Add or Modify Vendor" />
+    </form>
+
+    <h1>Delete an existing vendor</h1>
+    <p>If a vendor exists then it will be removed</p>
+
+    <form action="{% url 'vendor-delete' %}" method="post">
+        {% csrf_token %}
+        <input name="name" id="DeleteVendorVendorName" />
+            <label for="AddVendorVendorName">Enter your vendor name</label><br />
+        <input name="phone" id="DeleteVendorVendorPhone" />
+            <label for="AddVendorVendorPhone">Enter your phone number to confirm you own this vendor</label><br />
+        <input type="submit" value="Delete a vendor" />
+    </form>
+
+    <h1>Add a product</h1>
+
+    <form action="{% url 'vendor-product' %}" method="post">
+        {% csrf_token %}
+        <input name="name" id="AddProductProductName" />
+            <label for="AddVendorVendorName">Enter your product name</label><br />
+        <input type="checkbox" name="season" value="Winter">Winter<br>
+        <input type="checkbox" name="season" value="Spring">Spring<br>
+        <input type="checkbox" name="season" value="Summer">Summer<br>
+        <input type="checkbox" name="season" value="Fall">Fall<br>
+        <select name="product_type">
+          <option value="Baked Goods">Baked Goods</option>
+          <option value="Fruits">Fruits</option>
+          <option value="Vegetables">Vegetables</option>
+          <option value="Jams, Jellies, and Syrups">Jams, Jellies, and Syrups</option>
+          <option value="Meat">Meat</option>
+          <option value="Sauces">Sauces</option>
+          <option value="Noodles and Grains">Noodles and Grain</option>
+        </select>
+        <br/>
+        <input type="submit" value="Add a product" />
+    </form>
+
+{% endblock %}
