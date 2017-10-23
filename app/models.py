@@ -37,11 +37,12 @@ class Market(models.Model):
     def __str__(self):
         return self.name
 
+
 @python_2_unicode_compatible
 class Query(models.Model):
-    longitude = models.FloatField()
-    latitude = models.FloatField()
-    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    time = models.DateTimeField()
+    product = models.ForeignKey(Product, on_delete=None, default=None)
 
     def __str__(self):
-        return self.address
+        return self.city
