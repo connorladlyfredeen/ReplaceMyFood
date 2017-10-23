@@ -1,15 +1,15 @@
 from controlcenter import Dashboard, widgets
-from app.models import Query, Product
+from app.models import Query, Product, Vendor
 from django.db.models import Count
 
 
-class MostCommonCities(widgets.ItemList):
+class MostCommonQueriedCities(widgets.ItemList):
     model = Query
     queryset = Query.objects.all().values('city').annotate(total=Count('city')).order_by('-total')[:10]
     list_display = ('city', 'total')
 
 
-class MostCommonProducts(widgets.ItemList):
+class MostCommonQueriedProducts(widgets.ItemList):
     model = Query
     queryset = Query.objects.all().values('product').annotate(total=Count('product')).order_by('-total')[:10]
     list_display = ('get_name', 'total')
@@ -27,7 +27,7 @@ class LastTenQueries(widgets.ItemList):
 
 class MyDashboard(Dashboard):
     widgets = (
-        MostCommonCities,
-        MostCommonProducts,
+        MostCommonQueriedCities,
+        MostCommonQueriedProducts,
         LastTenQueries,
     )

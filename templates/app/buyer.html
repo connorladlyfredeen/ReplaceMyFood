@@ -2,7 +2,22 @@
 
 {% block content %}
     <h1>
-        Find local food near you
+        Find local food near you.
     </h1>
+    <script>
+        function goToProduct() {
+            var product = document.getElementById("productName").value
+            var city = document.getElementById("cityName").value
+            window.location.href = '/buyer/product?name=' + encodeURI(product) + '&city=' + encodeURI(city)
+        }
+        function goToMarket() {
+            var city = document.getElementById("marketCityName").value
+            window.location.href = '/buyer/market?city=' + encodeURI(city)
+        }
+    </script>
+    <h3>Search for a product</h3>
+    Product Name: <input id="productName"/> Your City: <input id="cityName"/><button onclick="goToProduct()">Search for Product</button>
+    <h3>Search for markets in your city</h3>
+    <input id="marketCityName"/><button onclick="goToMarket()">Search for Product</button>
 
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    {% if product %}
+        <h2>{{ product.name }}</h2>
+        <p>Here are some seasonal product replacements:</p>
+        {% if product_replacements %}
+            <ul>
+                {% for product_replacement in product_replacements %}
+                    <li>{{ product_replacement.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No replacements available</p>
+        {% endif %}
+    {% else %}
+        <h2>No product available with name {{ product_name }}</h2>
+    {% endif %}
+
+{% endblock %}

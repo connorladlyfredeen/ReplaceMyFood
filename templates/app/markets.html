@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h2>{{ city }}</h2>
+        {% if markets %}
+            <p>Here are some markets near you:</p>
+            <ul>
+                {% for market in markets %}
+                    <li>{{ market.name }}, {{ market.address }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No markets near you yet...</p>
+        {% endif %}
+{% endblock %}
