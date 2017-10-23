@@ -51,3 +51,4 @@ docs/_build/
 /db.sqlite3
 /.env
 /replaceMyFood/staticfiles/
+.idea/workspace.xml
