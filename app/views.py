@@ -12,6 +12,7 @@ def home(request):
     template = loader.get_template('app/home.html')
     return HttpResponse(template.render())
 
+
 def vendor(request):
     return HttpResponse("This is the vendor landing page where vendors can add their products and location or a market with many vendors")
 

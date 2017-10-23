@@ -7,8 +7,17 @@ from django.db import models
 
 @python_2_unicode_compatible
 class Product(models.Model):
+    PRODUCT_TYPES = (
+        ('Baked Goods', 'Baked Goods'),
+        ('Fruits', 'Fruits'),
+        ('Vegetables', 'Vegetables'),
+        ('Jams, Jellies, and Syrups', 'Jams, Jellies, and Syrups'),
+        ('Meat', 'Meat'),
+        ('Sauces', 'Sauces'),
+        ('Noodles and Grains', 'Noodles and Grains'),
+    )
     name = models.CharField(max_length=50)
-    product_type = models.CharField(max_length=50)
+    product_type = models.CharField(max_length=50, choices=PRODUCT_TYPES)
     winter = models.BooleanField(default=False)
     spring = models.BooleanField(default=False)
     summer = models.BooleanField(default=False)
@@ -21,7 +30,9 @@ class Product(models.Model):
 @python_2_unicode_compatible
 class Vendor(models.Model):
     name = models.CharField(max_length=50)
-    address = models.CharField(max_length=100)
+    owner = models.CharField(max_length=50, default="")
+    phone_number = models.CharField(max_length=50, default="")
+    market = models.ForeignKey('Market', on_delete=None, default=None, null=True)
 
     def __str__(self):
         return self.name
@@ -31,8 +42,7 @@ class Vendor(models.Model):
 class Market(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
-    longitude = models.FloatField()
-    latitude = models.FloatField()
+    city = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
