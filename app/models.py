@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
+import pgcrypto
+
 
 
 @python_2_unicode_compatible
@@ -30,8 +32,8 @@ class Product(models.Model):
 @python_2_unicode_compatible
 class Vendor(models.Model):
     name = models.CharField(max_length=50)
-    owner = models.CharField(max_length=50, default="")
-    phone_number = models.CharField(max_length=50, default="")
+    owner = pgcrypto.EncryptedCharField(max_length=50, default="")
+    phone_number = pgcrypto.EncryptedCharField(max_length=50, default="")
     market = models.ForeignKey('Market', on_delete=None, default=None, null=True)
 
     def __str__(self):

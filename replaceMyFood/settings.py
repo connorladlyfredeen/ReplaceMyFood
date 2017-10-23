@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'replaceMyFood.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL', default="sqlite:/db.sqlite3")
+        default=config('DATABASE_URL', default="postgres://localhost:5432/ReplaceMyFood")
     )
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
