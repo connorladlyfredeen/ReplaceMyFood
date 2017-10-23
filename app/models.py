@@ -31,16 +31,16 @@ class Vendor(models.Model):
 class Market(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
-    longitude = models.BigIntegerField()
-    latitude = models.BigIntegerField()
+    longitude = models.FloatField()
+    latitude = models.FloatField()
 
     def __str__(self):
         return self.name
 
 @python_2_unicode_compatible
 class Query(models.Model):
-    longitude = models.BigIntegerField()
-    latitude = models.BigIntegerField()
+    longitude = models.FloatField()
+    latitude = models.FloatField()
     address = models.CharField(max_length=100)
 
     def __str__(self):
