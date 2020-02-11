@@ -1,7 +1,7 @@
 certifi==2017.7.27.1
 chardet==3.0.4
 dj-database-url==0.4.2
-Django==1.11.6
+Django==1.11.28
 django-controlcenter==0.2.3
 django-pgcrypto==1.4.0
 django-pkgconf==0.3.0
